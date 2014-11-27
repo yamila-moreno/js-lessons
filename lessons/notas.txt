@@ -1,0 +1,30 @@
+karma se encarga de lanzar los tests en el navegador que le digamos
+
+./node_modules/karma/bin/karma init es un wizard de configurazión de karma
+
+primera pregunta: qué framework vamos a usar. se refiere al framework de testing tabulamos y podemos elegir "mocha" (estructura de los tests)
+
+segunda: require.no
+
+tercera: navegador > chrome
+
+cuarta: dónde van los ficheros
+
+vim node_modules/karma-chrome-launcher/index.js +46 <- cambiar "google-chrome" por "chromium"
+
+"mocha" se encarga de la estructura de los tests
+"chai" se encarga de las aserciones
+"sinon" es para mocks
+
+./node_modules/karma/bin/karma start levanta el navegador (se cierra desde la consola únicamente)
+
+
+en un test ejemplo:
+- describe e it pertenecen a mocha
+- expect pertenece a chai
+
+
+PATRÓN MÓDULO
+
+
+

@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js - The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <h1>Curso JS</h1>
+                </section>
+
+                <section>
+                    <h2>Javascript vs Ecmascript</h2>
+                    <p>Javascript es el lenguaje de programación</p>
+                    <p>Ecmascript es la especificación, actualmente se está trabajando en la versión 6 que estará publicada el año que viene</p>
+                </section>
+
+                <section>
+                    <h2>Primitivos / Objetos</h2>
+                </section>
+
+                <section>
+                    <h2>Primitivos</h2>
+                    <ul>
+                        <li>booleans</li>
+                        <li>numbers</li>
+                        <li>strings</li>
+                        <li>null</li>
+                        <li>undefined</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Comparación por valor</h4>
+                    <pre><code data-trim contenteditable>
+                    2 === 2 // true
+                    </code></pre>
+
+                    <h4>Inmutables</h4>
+                    <pre><code data-trim contenteditable>
+var test = 'hola';
+test.kk = '12345'
+
+console.log(test.kk) //undefined
+test.length = 1
+console.log(test.length) //5
+</code></pre>
+                </section>
+                <section>
+                    <h2>Objetos</h2>
+                    <ul>
+                        <li>{}</li>
+                        <li>arrays</li>
+                        <li>expresiones regulares</li>
+                        <li>function</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Comparación por referencia</h4>
+                    <pre><code data-trim contenteditable>
+{} === {} // false
+                    </code></pre>
+
+                    <h4>Mutables</h4>
+                    <pre><code data-trim contenteditable>
+var test = {};
+test.hola = 'hola!';
+</code></pre>
+                </section>
+
+                <section>
+                    <h4>undefined (no hay valor)</h4>
+                    <pre><code data-trim contenteditable>
+var x;
+console.log(x); //undefined
+
+function test(param1) {
+    console.log(param1);
+}
+
+test(); //undefined
+
+var obj1 = {};
+
+console.log(obj1.test); //undefined
+</code></pre>
+
+                </section>
+                <section>
+                    <h2>undefined vs null</h2>
+                    <div style="text-align: left">
+                        <p>(name is undefined)</p>
+                        <p><strong>You:</strong> What is name?</p>
+                        <p><strong>JavaScript:</strong> name? What's a name? I don't know what you're talking about. You haven't ever mentioned any name before.</p>
+
+                        <p>name = null;</p>
+
+                        <p><strong>You:</strong> What is name?</p>
+                        <p><strong>JavaScript:</strong> I don't know.</p>
+                    </div>
+                </section>
+
+                <section>
+                    <h2>typeof</h2>
+<pre><code data-trim contenteditable>
+typeof undefined //undefined
+typeof null //object
+typeof true //boolean
+typeof 3 //number
+typeof 'str' //string
+typeof function() {} //function
+typeof {} //object
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>instanceof</h2>
+<pre><code data-trim contenteditable>
+[] instanceof Array //true
+[] instanceof Object //true
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Falsy</h2>
+                    <p>undefined, null ,false , '', 0, NaN</p>
+<pre><code data-trim contenteditable>
+Boolean(0) //false
+Boolean('hola') //true
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Operadores binarios</h2>
+<pre><code data-trim contenteditable>
+&& ||
+
+false && test1() //test no se evalua
+</code></pre>
+                </section>
+                <section>
+                    <h2>Operadores comparación</h2>
+<pre><code data-trim contenteditable>
+== !=
+=== !== //(usar este)
+
+'3' == 3
+3 === 3
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>function</h2>
+<pre><code data-trim contenteditable>
+function suma(num1, num2) {
+    return num1 + num2;
+}
+
+var suma = function(num1, num2) {
+    return num1 + num2;
+};
+
+suma(suma(2,4), suma(1,2));
+
+</code></pre>
+                </section>
+
+                <section>
+<pre><code data-trim contenteditable>
+function hello() {
+    print('hello js');
+    print2('hello js 2');
+
+    var print = function (msg) {
+        console.log(msg);
+    }
+
+    function print2(msg) {
+        console.log(msg);
+    }
+
+    print('hello js');
+    print2('hello js 2');
+}
+</code></pre>
+                </section>
+
+                <section>
+<pre><code data-trim contenteditable>
+function test() {
+    console.log(arguments); // [1,2,3,4]
+}
+
+test(1,2,3,4);
+
+*argumentos no es exactamente un array
+</code></pre>
+                </section>
+                <section>
+                    <h2>muchos / pocos argumentos</h2>
+<pre><code data-trim contenteditable>
+function test(a,b) {
+    console.log(a + ", " + b);
+    console.log(arguments)
+}
+
+test(1, 2)
+// 1, 2
+// [1, 2]
+
+test(1)
+// 1, undefined
+// [1]
+
+test(1, 2, 3)
+// 1, 2
+// [1, 2, 3]
+</code></pre>
+                </section>
+                <section>
+                    <h2>Parámetros opcionales</h2>
+
+<pre><code data-trim contenteditable>
+function test(a, b) {
+    a = a || 'default';
+
+    console.log(a + ", " + b);
+    console.log(arguments)
+}
+
+//ES6
+function test(a = 'default', b) {}
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>scope</h2>
+                    <p>El scope lo marca las funciones</p>
+
+<pre><code data-trim contenteditable>
+var x1 = 'hola';
+
+function test() {
+    console.log(x1); // funciona
+
+    var x2 = 'adios';
+}
+
+test();
+console.log(x2); //undefined
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>closures</h2>
+                    <p>Las variables permanecen conectadas al scope en el que fueron creadas</p>
+
+<pre><code data-trim contenteditable>
+function holaGenerator() {
+    var hola = 'hola!';
+
+    return function () {
+        return hola += 'hola!';
+    }
+}
+
+var holita = holaGenerator();
+
+console.log(holita()); //hola!hola!
+console.log(holita()); //hola!hola!hola!
+console.log(holita()); //hola!hola!hola!hola
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>IIFE</h2>
+<pre><code data-trim contenteditable>
+var soySuperGlobal = 'esto es una caca';
+
+(function() {
+    var noPuedoSerGlobal = 'mejor, mejor';
+}());
+</code></pre>
+                </section>
+
+                <section>
+                    <section>
+                        <pre><code data-trim contenteditable>
+var results = [];
+
+for (var i = 0; i < 5; i++) {
+    results.push(function () {
+        return 'Número '+ i;
+    });
+}
+
+console.log(results[0]());
+console.log(results[1]());
+console.log(results[2]());
+                         </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable>
+var results = [];
+
+for (var i = 0; i < 5; i++) {
+    (function () {
+        var z = i;
+
+        results.push(function() {
+            return 'Número '+ z;
+        });
+    }());
+}
+
+console.log(results[0]());
+console.log(results[1]());
+console.log(results[2]());
+                         </code></pre>
+                        </section>
+                </section>
+
+                <section>
+                    <h2>Object</h2>
+<pre><code data-trim contenteditable>
+var student = {
+    'name': 'Pepe',
+    'age': 20,
+    'describe': function () {
+        console.log("Helly I'm " + this.name);
+    }
+}
+
+student.name = 'Lola';
+student.describe();
+student.phone = '123';
+
+delete student.phone;
+
+student['name'];
+</code></pre>
+                </section>
+
+                <section>
+<pre><code data-trim contenteditable>
+var student = {
+    'name': 'Pepe',
+    'age': 20,
+    'describe': function () {
+        console.log("Helly I'm " + this.name);
+    }
+}
+
+var pepeDescription = student.describe;
+
+pepeDescription();
+
+var pepeDescription = student.describe.bind(student);
+
+pepeDescription();
+</code></pre>
+                </section>
+
+                <section>
+<pre><code data-trim contenteditable>
+
+var student = {
+    'name': 'Pepe',
+    'age': 20,
+    'friends': ['Luis', 'Antonio'],
+    'logFriends': function () {
+        this.friends.forEach(function(friend) {
+            console.log("Hi I'm " + this.name + " and " + friend + " is my friend");
+        });
+    }
+}
+
+student.logFriends();
+
+// this == al valor del objecto que invoca la función
+</code></pre>
+                </section>
+
+                <section>
+                    <h2>Constructores</h2>
+<pre><code data-trim contenteditable>
+function Person(name, age) {
+    this.name = name;
+    this.age = age;
+}
+
+//compartido
+Person.prototype.describe = function () {
+    console.log("Helly I'm " + this.name);
+}
+
+var pepe = new Person('pepe', 20);
+pepe.describe();
+</code></pre>
+                </section>
+
+
+                <section>
+                    <section>
+                    <h2>'use strict';</h2>
+                    <h3>Variables</h3>
+<pre><code data-trim contenteditable>
+function strictFunc() {
+    'use strict';
+    strictVar = 123;
+}
+strictFunc(); // ReferenceError: strictVar is not defined
+</code></pre>
+                    </section>
+                    <section>
+                        <h3>Functions must be declared at the top level of a scope</h3>
+                        <pre><code data-trim contenteditable>
+function strictFunc() {
+    'use strict';
+    if (true) { //bloque
+        // SyntaxError:
+        function nested() {
+        }
+    }
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable>
+function sloppyFunc() {
+    console.log(this === window);
+}
+
+function strictFunc() {
+    'use strict';
+     console.log(this === undefined); // true
+}
+
+                        </code></pre>
+                    </section>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>

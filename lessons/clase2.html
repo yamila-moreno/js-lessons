@@ -1,0 +1,502 @@
+<!doctype html>
+<html lang="en">
+
+    <head>
+        <meta charset="utf-8">
+
+        <title>reveal.js - The HTML Presentation Framework</title>
+
+        <meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+        <meta name="author" content="Hakim El Hattab">
+
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+        <link rel="stylesheet" href="css/reveal.min.css">
+        <link rel="stylesheet" href="css/theme/simple.css" id="theme">
+
+        <!-- For syntax highlighting -->
+        <link rel="stylesheet" href="lib/css/zenburn.css">
+
+        <!-- If the query includes 'print-pdf', include the PDF print sheet -->
+        <script>
+            if( window.location.search.match( /print-pdf/gi ) ) {
+                var link = document.createElement( 'link' );
+                link.rel = 'stylesheet';
+                link.type = 'text/css';
+                link.href = 'css/print/pdf.css';
+                document.getElementsByTagName( 'head' )[0].appendChild( link );
+            }
+        </script>
+
+        <!--[if lt IE 9]>
+        <script src="lib/js/html5shiv.js"></script>
+        <![endif]-->
+    </head>
+
+    <body>
+
+        <div class="reveal">
+
+            <!-- Any section element inside of this container is displayed as a slide -->
+            <div class="slides">
+                <section>
+                    <section>
+                        <h1>Copiado / Referencia</h1>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var x = 3;
+var y = x;
+
+x = 4;
+console.log(y) // 3
+
+var z = {};
+var w = z;
+
+z.hello = 'Hi!';
+
+console.log(w);// {'hello': 'Hi!'}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var names = ['Luis', 'Antonio'];
+
+function addItem(items) {
+    items.push('Juan');
+}
+
+addItem(names);
+
+console.log(names);
+//sólo pasa con objetos
+                        </code></pre>
+                    </section>
+                </section>
+
+
+                <section>
+                    <section>
+                        <h1>Loops</h1>
+                    </section>
+                    <section>
+                        <p>while, do-while, for</p>
+                    </section>
+                    <section>
+                        <h2>for-in</h2>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var abc = ['a', 'b', 'c', 'd'];
+
+abc.hola = 'aaaaa'
+
+for (letter in abc) {
+    console.log(letter);
+}
+
+//0
+//1
+//2
+//3
+//hola
+                        </code></pre>
+                        <p>for-in recorre todas las claves de un objeto</p>
+                    </section>
+                </section>
+
+                <section>
+                    <h1>Functions, Scopes & Closures</h1>
+                </section>
+                <section>
+                    <section>
+                        <h2>Hoisting</h2>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+test1();
+
+function test1() {
+
+}
+                    </code></pre>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+test1();
+
+var test1 = function() {
+
+}
+                    </code></pre>
+                    </section>
+                    <section>
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function test1() {
+
+}
+test1();
+                    </code></pre>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var test1;
+test1();
+
+test1 = function() {
+
+}
+                    </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Creando funciones</h2>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function add(x, y) {
+    return x + y;
+}
+
+var add = function (x, y) {
+    return x + y;
+};
+
+var add = new Function('x', 'y', 'return x + y');
+                        </code></pre>
+                    </section>
+                </section>
+                <section>
+                    <section>
+                        <h2>IIFE</h2>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function f() {
+    if (condition) {
+        var temp1 = '...'
+    }
+   //temp1 existe aquí
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function f() {
+    if (condition) {
+        (function () {
+            var temp1 = '...'
+        }());
+    }
+   //temp1 no existe
+}
+                        </code></pre>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+(function ($, selector) {
+    $(selector).remove();
+}(jQuery, '.hello'));
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var setValue = function () {
+    var prevValue;
+    return function (value) { //clousure
+        if (value !== prevValue) {
+            console.log('Changed: ' + value);
+            prevValue = value;
+        }
+    };
+}();
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <section>
+                    <h2>Closures</h2>
+                    <p>Las funciones permaneces conectadas a su scope de nacimiento</p>
+                    </section>
+                    <section>
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function createInc(startValue) {
+    return function (step) {
+        startValue += step;
+        return startValue;
+    };
+}
+
+var inc = createInc(2);
+inc(1);//3
+inc(5);//8
+                        </code></pre>
+                    </section>
+                </section>
+
+                <section>
+                    <h2>Ejercicio 1</h2>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var comparador = comparador('marta');
+
+comparador('luis'); //luis tienes menos letras que marta
+comparador('antonio'); //antonio tiene mas letras que marta
+                    </code></pre>
+
+                    <aside class="notes">
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function comparador(originalName) {
+   return function (name) {
+       if (name.length > originalName.length) {
+           return name + ' tiene más letras que ' + originalName
+       } else {
+           return name + ' tiene menos letras que ' + originalName
+       }
+   }
+}
+                        </code></pre>
+                    </aside>
+                </section>
+
+
+                <section>
+                    <h2>Ejercicio 2</h2>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var names = ['name1', 'name2', 'name3'];
+
+var countChar = CountChar(names);
+
+countChar[0](true); //5 characters
+countChar[0](); //5
+                    </code></pre>
+
+                    <aside class="notes">
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+function CountChar(list) {
+   var str = " characters";
+   var fns = [];
+
+   for(var i = 0; i < list.length; i++) {
+       (function (text) {
+           fns.push(function(withCharText) {
+               if (withCharText) {
+                   console.log(text + str);
+               } else {
+                   console.log(text);
+               }
+           });
+       }(list[i]));
+   }
+
+   return fns;
+}
+                        </code></pre>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Ejercicio 3</h2>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var fnAdd = add(3);
+var fnSub = sub(2);
+
+calculator(100, [fnAdd, fnSub]);
+//103
+//98
+                    </code></pre>
+
+                    <aside class="notes">
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var add = function (init) {
+    return function (num) {
+         return init + num;
+    }
+};
+
+var sub = function (init) {
+    return function (num) {
+         return num - init;
+    }
+};
+
+var calculator = function (init, fns) {
+    for(var i = 0; i < fns.length; i++) {
+         console.log(fns[i](init));
+    }
+};
+
+var fnAdd = add(3);
+var fnSub = sub(2);
+
+calculator(100, [fnAdd, fnSub]);
+                        </code></pre>
+                    </aside>
+                </section>
+
+                <section>
+                    <h2>Ejercicio 4</h2>
+                    <ul>
+                    <li>mismo numero de funciones que de números</li>
+                    <li>hay que usar arguments</li>
+                    <li>hay una clousure dentro de otra</li>
+                    </ul>
+
+                    <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var calculator = Calculator(0);
+
+var fn = calculator(add, add, sub);
+
+fn(3, 4, 1); //6
+
+                    </code></pre>
+
+                    <aside class="notes">
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+
+var add = function (a, b) {
+    return a + b;
+};
+
+var sub = function (a, b) {
+    return a - b;
+};
+
+function Calculator(init) {
+   return function () {
+       var operaciones = arguments;
+
+       return function () {
+           var current = init;
+           for(var i = 0; i < arguments.length; i++) {
+               current = operaciones[i](current, arguments[i]);
+           }
+
+           return current;
+       }
+   }
+}
+                        </code></pre>
+                    </aside>
+                </section>
+
+                <section>
+                    <section>
+                        <h2>Sobreescribiendo el valor de this</h2>
+                    </section>
+                    <section>
+                        <h2>apply</h2>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+hello.apply(translate, ['Juan', 'Pedro']);
+                        </code></pre>
+                    </section>
+                    <section>
+                        <h2>call</h2>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+hello.call(translate, 'Juan', 'Pedro');
+                        </code></pre>
+                    </section>
+
+                    <section>
+                        <h2>bind</h2>
+
+                        <pre><code data-trim contenteditable style="font-size: 18px; margin-top: 20px;">
+var translate = {
+    spanish: 'Hola',
+    english: 'Hi'
+}
+
+function hello(name1, name2) {
+    console.log( this.spanish + ' ' + name1 );
+    console.log( this.english + ' ' + name1 );
+
+    console.log( this.spanish + ' ' + name2 );
+    console.log( this.english + ' ' + name2 );
+}
+
+var hello2 = hello.bind(translate, 'Juan);
+
+hello2('Juan', 'Pedro');
+
+
+var helloJuanAndFriend = hello.bind(translate, 'Juan');
+
+/*
+function helloJuanAndFriend(name2) {
+    return hello('Juan', name2);
+}
+*/
+
+helloJuanAndFriend('Pedro');
+helloJuanAndFriend('Luis');
+
+                        </code></pre>
+                    </section>
+                </section>
+            </div>
+
+        </div>
+
+        <script src="lib/js/head.min.js"></script>
+        <script src="js/reveal.min.js"></script>
+
+        <script>
+
+            // Full list of configuration options available here:
+            // https://github.com/hakimel/reveal.js#configuration
+            Reveal.initialize({
+                controls: true,
+                progress: true,
+                history: true,
+                center: true,
+
+                theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+                transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+                // Parallax scrolling
+                // parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+                // parallaxBackgroundSize: '2100px 900px',
+
+                // Optional libraries used to extend on reveal.js
+                dependencies: [
+                    { src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+                    { src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+                    { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+                    { src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+                    { src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+                ]
+            });
+
+        </script>
+
+    </body>
+</html>
