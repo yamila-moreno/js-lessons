@@ -27,4 +27,7 @@ en un test ejemplo:
 PATRÓN MÓDULO
 
 
+Objetos y herencias
+
+- single objects: solo existen una vez en la aplicación (ej: jquery.ajax)
 
