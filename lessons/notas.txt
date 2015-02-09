@@ -1,3 +1,6 @@
+https://gitlab.kaleidos.net/juanfran.alcantara/curso-js
+
+
 karma se encarga de lanzar los tests en el navegador que le digamos
 
 ./node_modules/karma/bin/karma init es un wizard de configurazión de karma
