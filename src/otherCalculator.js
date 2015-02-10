@@ -14,17 +14,16 @@ function OtherCalculator() {
     'use strict'
 
     var array = arguments;
+    var nums;
 
     var obj = {
-        set: function(dict) {
-            for(var key in dict) {
-                this[key] = dict[key];
-            }
+        set: function(dictnums) {
+            nums = dictnums;
         },
         result: function () {
             var result = [];
             for (var i=0; i<array.length; i++) {
-                result.push(array[i].bind(this)());
+                result.push(array[i].call(nums));
             }
             return result;
         }
